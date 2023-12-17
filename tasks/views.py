@@ -6,8 +6,9 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task
+from .models import Comment
 
-from .forms import TaskForm
+from .forms import TaskForm, CommentForm
 
 # Create your views here.
 
@@ -114,3 +115,36 @@ def delete_task(request, task_id):
     if request.method == 'POST':
         task.delete()
         return redirect('tasks')
+
+
+@login_required
+def task_public(request):
+    tasks = Task.objects.filter(public=True)
+    tasks = tasks.exclude(user=request.user)
+
+    comments_dict = {}
+
+    for task in tasks:
+        comments = Comment.objects.filter(task=task)
+        comments_dict[task.id] = comments
+
+    print("Comentarios:", comments_dict, "\n")
+    print("Tareas publicas: ", tasks, "\n")
+    return render(request, 'tasks.html', {"tasks": tasks, "is_public": True, "comments_dict": comments_dict, "comment_form": CommentForm})
+
+
+@login_required
+def add_comment(request, task_id):
+    print(f"task_id: {task_id}")
+    task = get_object_or_404(Task, pk=task_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.task = task
+            new_comment.user = request.user
+            new_comment.save()
+            print("Comment saved successfully")
+        else:
+            print("Comment not saved")
+    return redirect('task_public')
