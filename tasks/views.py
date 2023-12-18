@@ -15,7 +15,7 @@ SIGNUP_TEMPLATE = 'signup.html'
 
 def signup(request):
     if request.method == 'GET':
-        return render(request, 'SIGN_TEMPLATE', {"form": UserCreationForm})
+        return render(request, SIGNUP_TEMPLATE, {"form": UserCreationForm})
     else:
 
         if request.POST["password1"] == request.POST["password2"]:
@@ -26,9 +26,9 @@ def signup(request):
                 login(request, user)
                 return redirect('tasks')
             except IntegrityError:
-                return render(request, 'SIGN_TEMPLATE', {"form": UserCreationForm, "error": "Username already exists."})
+                return render(request, SIGNUP_TEMPLATE, {"form": UserCreationForm, "error": "Username already exists."})
 
-        return render(request, 'SIGN_TEMPLATE', {"form": UserCreationForm, "error": "Passwords did not match."})
+        return render(request, SIGNUP_TEMPLATE, {"form": UserCreationForm, "error": "Passwords did not match."})
 
 
 @login_required
