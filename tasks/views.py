@@ -9,12 +9,13 @@ from .models import Task
 
 from .forms import TaskForm
 
-# Create your views here.
+# Constante para signup
+SIGNUP_TEMPLATE = 'signup.html'
 
 
 def signup(request):
     if request.method == 'GET':
-        return render(request, 'signup.html', {"form": UserCreationForm})
+        return render(request, 'SIGN_TEMPLATE', {"form": UserCreationForm})
     else:
 
         if request.POST["password1"] == request.POST["password2"]:
@@ -25,9 +26,9 @@ def signup(request):
                 login(request, user)
                 return redirect('tasks')
             except IntegrityError:
-                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
+                return render(request, 'SIGN_TEMPLATE', {"form": UserCreationForm, "error": "Username already exists."})
 
-        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+        return render(request, 'SIGN_TEMPLATE', {"form": UserCreationForm, "error": "Passwords did not match."})
 
 
 @login_required
@@ -54,6 +55,11 @@ def create_task(request):
             return redirect('tasks')
         except ValueError:
             return render(request, 'create_task.html', {"form": TaskForm, "error": "Error creating task."})
+    
+@login_required
+def public_tasks(request):
+    tasks = Task.objects.filter(is_public=True)
+    return render(request, 'public_tasks.html', {'tasks': tasks})
 
 
 def home(request):
