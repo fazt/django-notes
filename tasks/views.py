@@ -88,8 +88,9 @@ def signin(request):
 def task_detail(request, task_id):
     if request.method == 'GET':
         task = get_object_or_404(Task, pk=task_id, user=request.user)
+        comments = task.comments.all()
         form = TaskForm(instance=task)
-        return render(request, 'task_detail.html', {'task': task, 'form': form})
+        return render(request, 'task_detail.html', {'task': task, 'form': form, 'comments': comments})
     else:
         try:
             task = get_object_or_404(Task, pk=task_id, user=request.user)
