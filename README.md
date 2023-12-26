@@ -98,3 +98,47 @@ class TasksTestCase(LiveServerTestCase):
 El modelo de dominio se centra en el dominio de "Task", del cual se extienden otros modelos como "TaskAdmin", "TaskForm", y "TaskConfig", y también otro modelo "User" que administras las tasks.
 
 ![Alt text](image.png)
+
+## MÓDULO AUTH
+
+Se agrego el módulo de "auth", en el que se incluyeron funciones como el "sigin", "signout", y "signup".
+
+```python
+
+def signup(request):
+    if request.method == 'GET':
+        return render(request, 'signup.html', {"form": UserCreationForm})
+    else:
+
+        if request.POST["password1"] == request.POST["password2"]:
+            try:
+                user = User.objects.create_user(
+                    request.POST["username"], password=request.POST["password1"])
+                user.save()
+                login(request, user)  # Replace LoginFailure with login
+                return redirect('tasks')
+            except IntegrityError:
+                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
+
+        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+
+
+def signin(request):
+    if request.method == 'GET':
+        return render(request, 'signin.html', {"form": AuthenticationForm})
+    else:
+        user = authenticate(
+            request, username=request.POST['username'], password=request.POST['password'])
+        if user is None:
+            return render(request, 'signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
+
+        login(request, user)
+        return redirect('tasks')
+
+@login_required
+def signout(request):
+    logout(request)
+    return redirect('home')
+
+
+```
