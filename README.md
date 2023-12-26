@@ -159,6 +159,8 @@ header h1 {
 
 ![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/9bfccb65-6e8a-4bc1-958f-b9549cee671e)
 
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/5548d111-95f8-4d28-a673-e43fd4e77ad3)
+
 
 ### CASOS DE PRUEBA
 
@@ -213,7 +215,24 @@ class TasksTestCase(LiveServerTestCase):
         progress_message = self.selenium.find_element(By.ID, 'progress-message')
         self.assertIn('Completed 0/0', progress_message.text)
 ```
+### MODELO DE DOMINIO
 
+Modelo de Dominio:
+*Entidades:
+Usuario
+Tarea
+Progreso
+
+*Atributos:
+Usuario: ID, Nombre, Correo Electrónico, Contraseña
+Tarea: ID, Descripción, Estado (pendiente, completada, en progreso), Fecha de Creación, Fecha de Vencimiento
+Progreso: ID, ID del Usuario, Tareas Completadas
+
+*Relaciones:
+Un Usuario puede tener varias Tareas.
+Un Usuario puede tener un Progreso asociado.
+
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/5f189d93-de1b-4f5a-89b0-2687655fa750)
 
 ### MICROSERVICIOS IDENTIFICADOS
 
@@ -279,5 +298,7 @@ class TasksTestCase(LiveServerTestCase):
    Responsabilidades:
    - Iniciar y cerrar sesiones de usuario.
    - Gestionar tokens de sesión.
+
+![microservicios](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/b6d63c89-fb03-4710-bf24-0f066c8503e1)
 
 
