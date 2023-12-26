@@ -10,3 +10,10 @@ Primero tener descargado sqlite e iniciar el ejecutable de sqlite3.
 4. `python manage.py createsuperuser`
 5. `python manage.py runserver`
 6. Ingresar a tu navegador en el puerto 8000 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+
+# MODELO DE DOMINIO
+
+El modelo de dominio se centra en el dominio de "Task", del cual se extienden otros modelos como "TaskAdmin", "TaskForm", y "TaskConfig", y también otro modelo "User" que administras las tasks.
+
+![Alt text](image.png)
