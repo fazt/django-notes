@@ -210,3 +210,69 @@ class TasksTestCase(LiveServerTestCase):
         progress_message = self.selenium.find_element(By.ID, 'progress-message')
         self.assertIn('Completed 0/0', progress_message.text)
 ```
+### MICROSERVICIOS IDENTIFICADOS
+
+1. Microservicio de Autenticación y Registro:
+
+   Funcionalidades:
+   - Iniciar sesión con correo electrónico y contraseña.
+   - Registrarse como nuevo usuario.
+
+   Contexto delimitado: Autenticación
+
+   Responsabilidades:
+   - Validar credenciales de usuario.
+   - Generar y gestionar tokens de sesión.
+   - Registro y gestión de usuarios.
+
+2. Microservicio de Gestión de Tareas:
+
+   Funcionalidades:
+   - Crear nuevas tareas con descripción, fecha de creación y fecha de vencimiento.
+   - Marcar tareas como pendientes, en progreso o completadas.
+   - Visualizar la lista de tareas propias.
+   - Visualizar las tareas de otros usuarios.
+
+   Contexto delimitado: Gestión de Tareas
+
+   Responsabilidades:
+   - Crear y gestionar tareas.
+   - Asociar tareas a usuarios.
+   - Cambiar estados de tareas.
+
+3. Microservicio de Progreso del Usuario:
+
+   Funcionalidades:
+   - Seguimiento del progreso general del usuario.
+   - Visualización de la cantidad de tareas completadas.
+
+   Contexto delimitado: Progreso del Usuario
+
+   Responsabilidades:
+   - Seguimiento del progreso general del usuario.
+   - Registrar y actualizar tareas completadas.
+
+4. Microservicio de Gestión de Usuarios:
+
+   Funcionalidades:
+   - Actualizar información del perfil.
+   - Cambiar la contraseña.
+
+   Contexto delimitado: Perfil del Usuario
+
+   Responsabilidades:
+   - Actualizar información del perfil del usuario.
+   - Cambiar la contraseña del usuario.
+
+5. Microservicio de Sesión de Usuario:
+
+   Funcionalidades:
+   - Cerrar sesión.
+
+   Contexto delimitado: Sesión de Usuario
+
+   Responsabilidades:
+   - Iniciar y cerrar sesiones de usuario.
+   - Gestionar tokens de sesión.
+
+
