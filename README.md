@@ -159,8 +159,6 @@ header h1 {
 
 ![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/9bfccb65-6e8a-4bc1-958f-b9549cee671e)
 
-![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/5548d111-95f8-4d28-a673-e43fd4e77ad3)
-
 
 ### CASOS DE PRUEBA
 
