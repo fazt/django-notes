@@ -6,4 +6,4 @@ Rama de Christian Pardavé Espinoza:
 
 Para la adición de comentarios en las tareas se creó la aplicación _comments_ dentro de django, para separar sus metodos de la aplicación _tasks_. Para esta implementación se identificó los modulos del proyecto.
 
-![Modulo de Commets](images/Captura de pantalla 2023-12-25 225503.png)
+![Modulo de Commets](https://github.com/SergioMenaQuispe/django-notes-ISII/blob/rama-christian/images/Captura%20de%20pantalla%202023-12-25%20225503.png)
