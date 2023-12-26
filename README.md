@@ -232,6 +232,8 @@ Progreso: ID, ID del Usuario, Tareas Completadas
 Un Usuario puede tener varias Tareas.
 Un Usuario puede tener un Progreso asociado.
 
+![M_IS_II](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/a897fff4-011a-4a3a-9807-2c65d725aa71)
+
 ![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/5f189d93-de1b-4f5a-89b0-2687655fa750)
 
 ### MICROSERVICIOS IDENTIFICADOS
