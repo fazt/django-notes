@@ -157,6 +157,9 @@ header h1 {
 </style>
 ```
 
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/9bfccb65-6e8a-4bc1-958f-b9549cee671e)
+
+
 ### CASOS DE PRUEBA
 
 Se hizo una prueba de test para comprobar la existencia de usuarios y la de no usuarios.
@@ -210,6 +213,8 @@ class TasksTestCase(LiveServerTestCase):
         progress_message = self.selenium.find_element(By.ID, 'progress-message')
         self.assertIn('Completed 0/0', progress_message.text)
 ```
+
+
 ### MICROSERVICIOS IDENTIFICADOS
 
 1. Microservicio de Autenticación y Registro:
