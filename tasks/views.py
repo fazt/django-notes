@@ -6,9 +6,9 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task
-from .models import Comment
-
-from .forms import TaskForm, CommentForm
+from comments.models import Comment
+from .forms import TaskForm
+from comments.forms import CommentForm
 
 # Create your views here.
 
@@ -129,8 +129,6 @@ def task_public(request):
         comments = Comment.objects.filter(task=task)
         comments_dict[task.id] = comments
 
-    print("Comentarios:", comments_dict, "\n")
-    print("Tareas publicas: ", tasks, "\n")
     return render(request, 'tasks.html', {"tasks": tasks, "is_public": True, "comments_dict": comments_dict, "comment_form": CommentForm})
 
 
