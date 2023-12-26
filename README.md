@@ -12,4 +12,9 @@ Se crean nuevas tareas en una base de datos a parte y se eliminan una vez termin
 ![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104391441/af55bd76-1ee2-43de-9f6f-fc91ef28e29a)
 
 
-Verifica que la fecha de creación de una tarea sea aproximadamente igual a la fecha actual.
+Verifica que la fecha de creación de una tarea sea una fecha valida
+
+
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104391441/06901a4f-65e3-480f-8fb3-3338e8f42e9f)
+
+
