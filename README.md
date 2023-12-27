@@ -1,6 +1,11 @@
 # Gestor de Tareas
 
 Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
+## Tecnologías Utilizadas
+- Django (Framework de Python para desarrollo web)
+- SQLite (Base de datos)
+- HTML/CSS (Frontend)
+- Bootstrap (Framework de CSS)
 
 ## Características
 
@@ -101,15 +106,9 @@ Además, implementé varios casos de prueba para asegurar la funcionalidad y rob
 
 Estos casos de prueba fueron fundamentales para mantener la calidad y estabilidad del software durante el desarrollo.
 
-## Tecnologías Utilizadas
-
-- Django (Framework de Python para desarrollo web)
-- SQLite (Base de datos)
-- HTML/CSS (Frontend)
-- Bootstrap (Framework de CSS)
 
 
-<<<<<<< HEAD
+
 
 # FEATURE PROGRESS BAR 
 
