@@ -6,6 +6,16 @@
 <h1>tasks</h1>
 {% endif %}
 
+<form>
+  <label for="filter">Filter:</label>
+  <select name="filter" id="filter">
+    <option value="all" {% if filter_type == 'all' %}selected{% endif %}>ALL</option>
+    <option value="shared" {% if filter_type == 'shared' %}selected{% endif %}>Shared</option>
+    <option value="normal" {% if filter_type == 'normal' %}selected{% endif %}>Normal</option>
+  </select>
+  <button type="submit">Apply</button>
+</form>
+
 <ul>
   {% for task in tasks %}
   <li>

@@ -10,6 +10,8 @@ class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_limite = models.DateField(null=True, blank=True)
     public = models.BooleanField(default=False)
+    shared = models.BooleanField(default=False)
+    shared_with = models.ManyToManyField(User, related_name='shared_tasks', blank=True)
 
     def _str_(self):  
       return self.title + ' - ' + self.user.username

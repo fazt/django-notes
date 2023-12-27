@@ -4,28 +4,32 @@
 
 {{task.title}}
 
+{% if is_shared_task %}
+  <p>This is a shared task</p>
+{% endif %}
+
 {{error}}
 
 <form method="POST">
   {% csrf_token %}
   {{form.as_p}}
 
-  <button>
+  <button type="submit">
     Update
   </button>
 </form>
 
 <form action="{% url 'complete_task' task.id %}" method="POST">
   {% csrf_token %}
-  <button>
-    complete
+  <button type="submit">
+    Complete
   </button>
 </form>
 
 <form action="{% url 'delete_task' task.id %}" method="POST">
   {% csrf_token %}
-  <button>
-    delete
+  <button type="submit">
+    Delete
   </button>
 </form>
 
