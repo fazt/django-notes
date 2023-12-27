@@ -6,14 +6,9 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task
-
 from .forms import TaskForm
 
-# Create your views here.
-
-
 def signup(request):
-
     signup_template = 'signup.html'
     if request.method == 'GET':
         return render(request, signup_template, {"form": UserCreationForm})
