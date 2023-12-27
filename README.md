@@ -2,6 +2,7 @@
 - Diego Francisco Apaza Andaluz (Rama_Diego)
 - Christian Pardavé Espinoza (rama-christian)
 - Eduardo German Ruiz Mamani (rama_Eduardo_real)
+- Sergio Sebastian Santos Mena Quispe (rama-Sergio)
 # Gestor de Tareas
 
 Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
