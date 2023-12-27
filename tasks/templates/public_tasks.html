@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Public Tasks</h1>
+<ul>
+  {% for task in tasks %}
+  <li>{{ task.title }} - {{ task.description }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -80,6 +80,11 @@ def create_task(request):
             return redirect('tasks')
         except ValueError:
             return render(request, 'create_task.html', {"form": TaskForm, "error": "Error creating task."})
+    
+@login_required
+def public_tasks(request):
+    tasks = Task.objects.filter(is_public=True)
+    return render(request, 'public_tasks.html', {'tasks': tasks})
 
 
 def home(request):
