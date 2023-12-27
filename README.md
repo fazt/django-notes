@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 
-Se crean nuevas tareas en una base de datos a parte y se eliminan una vez termine de ejecutarse el test
-
+# Pruebas Unitarias
 # Creacion de pruebas unitarias para el uso de fechas en la creacion de una nueva tarea:
-## Pruebas Unitarias
+
 
 
 ![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104391441/622dcff3-cedb-4c86-9dd3-078dd832a123)
