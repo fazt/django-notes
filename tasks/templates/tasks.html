@@ -50,4 +50,7 @@
   {% endfor %}
 </ul>
 
+<span id="progress-message">Tasks completed {{count_completed}}/{{count_total}}</span>
+<progress value="{{count_completed}}" max="{{count_total}}"></progress>
+
 {% endblock %}

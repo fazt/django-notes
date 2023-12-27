@@ -36,14 +36,24 @@ def signup(request):
 @login_required
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
-    return render(request, 'tasks.html', {"tasks": tasks})
+    tasks_completed = Task.objects.filter(user=request.user, datecompleted__isnull=False)
+
+    count_completed = tasks_completed.count()
+    count_not_completed = tasks.count()
+
+    return render(request, 'tasks.html', {"tasks": tasks, "count_total": count_completed + count_not_completed, "count_completed": count_completed})
+
 
 
 @login_required
 def tasks_completed(request):
-    tasks = Task.objects.filter(
-        user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
-    return render(request, 'tasks.html', {"tasks": tasks})
+    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    
+    tasks_not_completed = Task.objects.filter(user=request.user, datecompleted__isnull=True)
+    count_not_completed = tasks_not_completed.count()
+    count_completed = tasks.count()
+    
+    return render(request, 'tasks.html', {"tasks": tasks, "count_total": count_completed + count_not_completed, "count_completed": count_completed})
 
 
 @login_required
