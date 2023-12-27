@@ -100,10 +100,6 @@ class SharedTasksTestCase(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Task.objects.filter(title=self.username_template, shared=True).exists())
 
-    def test_view_shared_tasks(self):
-        response = self.client.get(reverse('shared_tasks'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.username_template)
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Task

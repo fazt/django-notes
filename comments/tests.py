@@ -2,7 +2,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Task
-from .forms import TaskForm
+from tasks.forms import TaskForm
 
 class TaskFormTest(TestCase):
     def setUp(self):
@@ -33,7 +33,7 @@ class TaskFormTest(TestCase):
         self.assertIn('fecha_limite', form.errors)  # Verifica que haya errores en el campo de fecha
 
     def test_blank_fields(self):
-        # Prueba que el formulario sea inválido si algunos campos requeridos están en blanco
+        # Prueba que el formulario sea invï¿½lido si algunos campos requeridos estï¿½n en blanco
         data = {
             'title': '',
             'description': '',
