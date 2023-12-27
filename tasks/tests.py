@@ -10,6 +10,12 @@ class SharedTasksTestCase(TestCase):
     description_template = 'Esta es una tarea compartida'
 
     def setUp(self):
+        user_exists = User.objects.filter(username=self.username_template).exists()
+        if not user_exists:
+            User.objects.create_user(
+                username=self.username_template,
+                password=self.password_template
+            ) 
         self.client.login(username=self.username_template, password=self.password_template)
 
     def test_create_shared_task(self):
@@ -18,12 +24,10 @@ class SharedTasksTestCase(TestCase):
             'description': self.description_template,
             'shared': True,
         })
-
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Task.objects.filter(title=self.username_template, shared=True).exists())
 
     def test_view_shared_tasks(self):
         response = self.client.get(reverse('shared_tasks'))
-
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.username_template)
