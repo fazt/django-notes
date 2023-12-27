@@ -233,7 +233,7 @@ class TasksTestCase(LiveServerTestCase):
 
 
 
-![M_IS_II](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/f2bdad6a-38ca-44b9-88b3-3acae5c2c3fe)
+
 
 
 # MODELO DE DOMINIO
@@ -242,4 +242,4 @@ El modelo de dominio se centra en el dominio de "Task", del cual se extienden ot
 
 ![Alt text](image.png)
 
-
+![M_IS_II](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/f2bdad6a-38ca-44b9-88b3-3acae5c2c3fe)
