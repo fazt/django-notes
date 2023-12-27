@@ -8,6 +8,10 @@ Este proyecto es una aplicación web para la gestión de tareas personales. Perm
 - HTML/CSS (Frontend)
 - Bootstrap (Framework de CSS)
 
+#Trello:
+
+https://trello.com/b/fbrJG4IH/proyecto-final
+
 ## Características
 
 - Registro e inicio de sesión de usuarios.
