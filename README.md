@@ -1,3 +1,28 @@
+# Gestor de Tareas
+
+Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
+
+## Características
+
+- Registro e inicio de sesión de usuarios.
+- Creación y gestión de tareas personales.
+- Marcar tareas como importantes.
+- Visualizar y editar tareas pendientes.
+- Registrar tareas completadas con fecha de finalización.
+- Navegación intuitiva a través de un menú de usuario.
+
+## Instalación y Ejecución
+
+Primero tener descargado sqlite e iniciar el ejecutable de sqlite3.
+[Link de descarga del .zip](https://www.sqlite.org/2023/sqlite-tools-win-x64-3440200.zip)
+
+
+1. `pip install -r requirements.txt`
+2. `python manage.py makemigrations`
+3. `python manage.py migrate`
+4. `python manage.py createsuperuser`
+5. `python manage.py runserver`
+6. Ingresar a tu navegador en el puerto 8000 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 # Pruebas Unitarias
 # Creacion de pruebas unitarias para el uso de fechas en la creacion de una nueva tarea:
@@ -47,7 +72,8 @@ Verifica que la fecha de creación de una tarea sea una fecha valida
 **fecha_limite:** Un campo de fecha que puede ser nulo y en blanco. Almacena la fecha límite para la tarea.
 
 **def __str__(self)::** Un método que devuelve una representación de cadena del objeto. En este caso, devuelve una cadena que combina el título de la tarea y el nombre de usuario del propietario.
-Rama de Christian Pardavé Espinoza:
+
+
 
 - Test vista tasks.
 - Implementación de comentarios en tareas públicas.
@@ -56,20 +82,8 @@ Rama de Christian Pardavé Espinoza:
 Para la adición de comentarios en las tareas se creó la aplicación _comments_ dentro de django, para separar sus metodos de la aplicación _tasks_. Para esta implementación se identificó los modulos del proyecto.
 
 ![Modulo de Commets](https://github.com/SergioMenaQuispe/django-notes-ISII/blob/rama-christian/images/Captura%20de%20pantalla%202023-12-25%20225503.png)
-# Pasos para iniciar proyecto
-=======
-# Gestor de Tareas
 
-Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
 
-## Características
-
-- Registro e inicio de sesión de usuarios.
-- Creación y gestión de tareas personales.
-- Marcar tareas como importantes.
-- Visualizar y editar tareas pendientes.
-- Registrar tareas completadas con fecha de finalización.
-- Navegación intuitiva a través de un menú de usuario.
 
 ## Contribuciones Específicas (Branch - Saul Arturo Condori Machaca)
 
@@ -94,22 +108,6 @@ Estos casos de prueba fueron fundamentales para mantener la calidad y estabilida
 - HTML/CSS (Frontend)
 - Bootstrap (Framework de CSS)
 
-## Instalación y Ejecución
->>>>>>> rama-Saul
-
-Primero tener descargado sqlite e iniciar el ejecutable de sqlite3.
-[Link de descarga del .zip](https://www.sqlite.org/2023/sqlite-tools-win-x64-3440200.zip)
-
-<<<<<<< HEAD
-
-=======
->>>>>>> rama-Saul
-1. `pip install -r requirements.txt`
-2. `python manage.py makemigrations`
-3. `python manage.py migrate`
-4. `python manage.py createsuperuser`
-5. `python manage.py runserver`
-6. Ingresar a tu navegador en el puerto 8000 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 <<<<<<< HEAD
 
