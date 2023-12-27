@@ -133,7 +133,9 @@ def signout(request):
 
 
 ```
+# Frameworks Utilizados: pytest
 
+Las pruebas unitarias son ejecutadas de manera automatizada utilizando pytest, un framework de pruebas para Python. Esto asegura la correcta funcionalidad de cada componente del software. 
 
 
 # Pruebas Unitarias
@@ -536,5 +538,24 @@ Un Usuario puede tener un Progreso asociado.
 ![microservicios](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/b6d63c89-fb03-4710-bf24-0f066c8503e1)
 
 
+# Frameworks Utilizados: Selenium y pytest
+
+Las pruebas funcionales automatizadas son realizadas con Selenium, un potente framework para pruebas web
 ![Imagen de WhatsApp 2023-12-26 a las 22 47 02_491b815f](https://github.com/SergioMenaQuispe/django-notes-ISII/blob/develop/images/Imagen%20de%20WhatsApp%202023-12-26%20a%20las%2022.47.02_cad53d01.jpg)
+# OWASP ZAP
+
+En el marco de nuestro compromiso con la seguridad del Proyecto de Gestor de Tareas, hemos implementado OWASP Zed Attack Proxy (ZAP) como una herramienta esencial para evaluar y mitigar posibles vulnerabilidades de seguridad. OWASP ZAP es una herramienta de prueba de seguridad de código abierto que nos permite identificar y abordar posibles riesgos de seguridad en nuestra aplicación.
+
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/3e08031e-b898-41a2-beb0-c7e1786f0c3b)
+
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/f50e73e1-cbcc-42f5-ba1c-00a85fcd7428)
+
+# JMETER
+
+Como parte integral de nuestro proceso de aseguramiento de la calidad, hemos incorporado Apache JMeter para realizar pruebas de rendimiento en el Proyecto de Gestor de Tareas. Apache JMeter es una herramienta potente y versátil que nos permite evaluar el rendimiento, la estabilidad y la escalabilidad de nuestra aplicación, especialmente en situaciones de carga simulada.
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/b9e4aeda-540b-44f0-9e62-c4149dbbe62b)
+
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/e457401b-43c4-4e2b-95d4-dd649dacef94)
+
+
 
