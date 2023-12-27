@@ -2,154 +2,85 @@
 
 {% block content %}
 <style>
-@media screen and (min-width: 480px) {
-    #form {
-        width: 400px;
+    body {
+        background-color: #2c2e31;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg'); /* Ruta de tu imagen de fondo */
+        background-size: cover;
+        background-position: center;
+        font-family: 'Times New Roman', Times, serif;
     }
-}
 
-@-webkit-keyframes animatebottom {
-    0% {
-        opacity: 0;
-        margin-top: 500px;
+    .container {
+        margin-top: 50px;
     }
-    100% {
-        opacity: 1;
-        margin-top: 0px;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333; /* Texto más oscuro */
     }
-}
 
-@keyframes animatebottom {
-    0% {
-        opacity: 0;
-        margin-top: 500px;
+    form {
+        background-image: url('https://e0.pxfuel.com/wallpapers/910/72/desktop-wallpaper-aesthetic-blue-and-orange-iphone-fondo-iphone-fondos-de-pantalla-de-color-azul-fondos-de-pantalla-tiernos-really-cool-blue.jpg');
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 25px 0px rgb(255, 255, 255);
+        max-width: 400px;
+        width: 100%;
+        margin: auto;
     }
-    100% {
-        opacity: 1;
-        margin-top: 0px;
+
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+        color: #ffffff; /* Texto más oscuro que el fondo pero no demasiado */
     }
-}
 
-input {
-    color: #888;
-    margin: 5px;
-    border-radius: 0px;
-    border: 0px solid #eee;
-    padding: 8px;
-    background: #eee;
-    transition-duration: .5s;
-}
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd; /* Gris más claro */
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
 
-input:focus {
-    border-radius: 50px;
-    background-color: #ccc;
-    color: #fff;
-}
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background-color: #007bff; /* Azul oscuro */
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
 
-a {
-    text-decoration: none !important;
-    color: #fff;
-}
+    button:hover {
+        background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+    }
 
-hr {
-    border: 2px solid #c1c1c1;
-}
-
-button {
-    cursor: hand;
-    border: none;
-    background: #27a5df;
-    color: white;
-    padding: 11px 26px;
-    border-radius: 5px;
-    font-size: 16px;
-    transition-duration: .1s;
-}
-
-button:active {
-    background-color: #555;
-}
-
-* {
-    outline: none;
-    user-select: none;
-}
-
-h1 {
-    width: 100%;
-    color: #888;
-}
-
-#form {
-    outline: 15px solid #4bbaed;
-    margin: 20px;
-    border-radius: 10px;
-    text-align: -webkit-center;
-    background: rgba(255, 255, 255, 1);
-    padding: 30px 10px;
-    border-top: 30px solid #27a5df;
-    border-bottom: 30px solid #27a5df;
-    box-shadow: -1px 1px 20px rgba(0, 0, 0, 0.5);
-    border: none;
-    outline: none;
-    animation: animatebottom 1s cubic-bezier(1, -0.06, 0.26, 1.06);
-}
-
-body {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: url("https://images.pexels.com/photos/1587/blurred-background.jpg?auto=compress&cs=tinysrgb&dpr=2&w=5000");
-    background-attachment: fixed;
-    background-position: bottom left;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 1s;
-    padding: 10px;
-    margin: 0;
-    color: #888;
-    font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
-    text-align: -webkit-center;
-}
-
-/* Changed footer - August 2020 */
-footer {
-    padding: 15px 15px;
-    width: 80%;
-    position: fixed;
-    bottom: 2%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    text-align: -webkit-center;
-    color: #fff!important;
-    border-radius: 50px;
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.25);
-}
-
-header h1 {
-    width: 90%;
-    border: 5px dotted #27a5df;
-    color: #27a5df;
-    text-align: -webkit-center;
-    border-radius: 5px;
-}
-
+    p {
+        text-align: center;
+        color: #d9534f; /* Rojo oscuro para el mensaje de error */
+        margin-top: 10px;
+    }
 </style>
-<h1>Signin</h1>
 
-<p>
-{{error}}
-</p>
+<div class="container">
+    <h1>Signin</h1>
 
-<form action="/signin/" method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <button>
-    Signin
-  </button>
-</form>
+    <p>{{error}}</p>
+
+    <form action="/signin/" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Signin</button>
+    </form>
+</div>
+
 
 {% endblock %}

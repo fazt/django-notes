@@ -1,7 +1,42 @@
-{% extends 'base.html' %} {% block content %}
+
+{% extends 'base.html' %} 
+{% block content %}
+<style>
+    body {
+        background-color: #2c2e31;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg'); /* Ruta de tu imagen de fondo */
+        background-size: cover;
+        background-position: center;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .container {
+        text-align: center;
+        padding: 50px;
+        color: #fff; /* Ajusta el color del texto para que sea legible en la imagen de fondo */
+    }
+
+    h1 {
+        font-size: 36px;
+        background-color: #2c2e31;
+    }
+
+    p {
+        font-size: 18px;
+        color: #000000;
+    }
+
+    .btn {
+        margin-top: 20px;
+    }
+</style>
 
 <div class="container">
-  <h1>Home</h1>
-</div>
+    <h1>Bienvenido a tu nuevo Desarrollo</h1>
+    <p>Explore las increíbles funciones que ofrecemos para mejorar su experiencia.</p>
 
+</div>
 {% endblock %}
+
