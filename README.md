@@ -4,6 +4,8 @@
 - Eduardo German Ruiz Mamani (rama_Eduardo_real)
 - Sergio Sebastian Santos Mena Quispe (rama-Sergio)
 - Saul Arturo Condori Machaca (rama-Saul)
+- Jesús Bruno Chancayauri Soncco (rama_Bruno)
+- Paolo Daniel Benavente Aguirre (Paolo Benavente_rama)
 # Gestor de Tareas
 
 Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
