@@ -1,5 +1,25 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 
+{% block content %}
+<style>
+  h1 {
+        font-size: 36px;
+        color: #000000;
+    }
+  .lista {
+      background-color: #5e5c5c; /* Fondo del elemento de la lista */
+      border: 1px solid #000000; /* Borde del elemento de la lista */
+      border-radius: 8px; /* Bordes redondeados */
+      margin-bottom: 10px;
+      padding: 15px; 
+  }
+  a {
+      text-decoration: none;
+      color: #007bff;
+  }
+</style>
+
+<div class="container">
 {% if is_public %}
 <h1>public tasks</h1>
 {% else %}
@@ -59,6 +79,7 @@
   </li>
   {% endfor %}
 </ul>
+</div>
 
 <span id="progress-message">Tasks completed {{count_completed}}/{{count_total}}</span>
 <progress value="{{count_completed}}" max="{{count_total}}"></progress>
