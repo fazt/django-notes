@@ -577,6 +577,8 @@ Las pruebas funcionales automatizadas son realizadas con Selenium, un potente fr
 ### SonarQube
 
 Análisis del proyecto después de agregar las nuevas funcionalidades:
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/09f2eb79-37c7-4835-9cb7-9d6aea37dd82)
+
 ![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/6baf3162-1693-4a9c-8b8b-0aa9369974af)
 
 
