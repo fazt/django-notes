@@ -32,9 +32,13 @@ Primero tener descargado sqlite e iniciar el ejecutable de sqlite3.
 
 ## Contribuciones Específicas 
 
+### Adicion de una fecha limite
+
+Se agrego una opcion para agregar una fecha limite en caso de necesitarla. 
+
 ### Tareas Públicas (Public Tasks)
 
-Mi contribución principal al proyecto fue el desarrollo de la funcionalidad "Tareas Públicas" (Public Tasks). Esta característica permite a los usuarios marcar sus tareas como públicas, haciéndolas accesibles a todos los usuarios de la plataforma. Fomenta la colaboración y transparencia, y añade una dimensión comunitaria a la gestión de tareas.
+Desarrollo de la funcionalidad "Tareas Públicas" (Public Tasks). Esta característica permite a los usuarios marcar sus tareas como públicas, haciéndolas accesibles a todos los usuarios de la plataforma. Fomenta la colaboración y transparencia, y añade una dimensión comunitaria a la gestión de tareas.
 
 
 ### FEATURE PROGRESS BAR 
