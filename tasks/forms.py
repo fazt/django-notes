@@ -1,7 +1,14 @@
-from django.forms import ModelForm
+from django import forms
+from django.contrib.auth.models import User
 from .models import Task
 
-class TaskForm(ModelForm):
+class TaskForm(forms.ModelForm):
+    shared_with = forms.ModelMultipleChoiceField(
+        queryset=User.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+
     class Meta:
         model = Task
         fields = ['title', 'description', 'important', 'shared']

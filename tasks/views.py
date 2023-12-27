@@ -58,6 +58,8 @@ def create_task(request):
             new_task = form.save(commit=False)
             new_task.user = request.user
             new_task.save()
+            shared_with_users = request.POST.getlist('shared_with')
+            new_task.shared_with.set(shared_with_users)
             return redirect('tasks')
         except ValueError:
             return render(request, 'create_task.html', {"form": TaskForm, "error": "Error creating task."})
