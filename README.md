@@ -157,6 +157,12 @@ header h1 {
 </style>
 ```
 
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/9bfccb65-6e8a-4bc1-958f-b9549cee671e)
+
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/5f0789a5-508e-4d26-be06-95562e13ffde)
+
+
+
 ### CASOS DE PRUEBA
 
 Se hizo una prueba de test para comprobar la existencia de usuarios y la de no usuarios.
@@ -210,3 +216,92 @@ class TasksTestCase(LiveServerTestCase):
         progress_message = self.selenium.find_element(By.ID, 'progress-message')
         self.assertIn('Completed 0/0', progress_message.text)
 ```
+### MODELO DE DOMINIO
+
+Modelo de Dominio:
+*Entidades:
+Usuario
+Tarea
+Progreso
+
+*Atributos:
+Usuario: ID, Nombre, Correo Electrónico, Contraseña
+Tarea: ID, Descripción, Estado (pendiente, completada, en progreso), Fecha de Creación, Fecha de Vencimiento
+Progreso: ID, ID del Usuario, Tareas Completadas
+
+*Relaciones:
+Un Usuario puede tener varias Tareas.
+Un Usuario puede tener un Progreso asociado.
+
+![M_IS_II](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/a897fff4-011a-4a3a-9807-2c65d725aa71)
+
+
+
+### MICROSERVICIOS IDENTIFICADOS
+
+1. Microservicio de Autenticación y Registro:
+
+   Funcionalidades:
+   - Iniciar sesión con correo electrónico y contraseña.
+   - Registrarse como nuevo usuario.
+
+   Contexto delimitado: Autenticación
+
+   Responsabilidades:
+   - Validar credenciales de usuario.
+   - Generar y gestionar tokens de sesión.
+   - Registro y gestión de usuarios.
+
+2. Microservicio de Gestión de Tareas:
+
+   Funcionalidades:
+   - Crear nuevas tareas con descripción, fecha de creación y fecha de vencimiento.
+   - Marcar tareas como pendientes, en progreso o completadas.
+   - Visualizar la lista de tareas propias.
+   - Visualizar las tareas de otros usuarios.
+
+   Contexto delimitado: Gestión de Tareas
+
+   Responsabilidades:
+   - Crear y gestionar tareas.
+   - Asociar tareas a usuarios.
+   - Cambiar estados de tareas.
+
+3. Microservicio de Progreso del Usuario:
+
+   Funcionalidades:
+   - Seguimiento del progreso general del usuario.
+   - Visualización de la cantidad de tareas completadas.
+
+   Contexto delimitado: Progreso del Usuario
+
+   Responsabilidades:
+   - Seguimiento del progreso general del usuario.
+   - Registrar y actualizar tareas completadas.
+
+4. Microservicio de Gestión de Usuarios:
+
+   Funcionalidades:
+   - Actualizar información del perfil.
+   - Cambiar la contraseña.
+
+   Contexto delimitado: Perfil del Usuario
+
+   Responsabilidades:
+   - Actualizar información del perfil del usuario.
+   - Cambiar la contraseña del usuario.
+
+5. Microservicio de Sesión de Usuario:
+
+   Funcionalidades:
+   - Cerrar sesión.
+
+   Contexto delimitado: Sesión de Usuario
+
+   Responsabilidades:
+   - Iniciar y cerrar sesiones de usuario.
+   - Gestionar tokens de sesión.
+
+![microservicios](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/b6d63c89-fb03-4710-bf24-0f066c8503e1)
+
+
