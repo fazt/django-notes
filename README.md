@@ -3,6 +3,7 @@
 - Christian Pardavé Espinoza (rama-christian)
 - Eduardo German Ruiz Mamani (rama_Eduardo_real)
 - Sergio Sebastian Santos Mena Quispe (rama-Sergio)
+- Saul Arturo Condori Machaca (rama-Saul)
 # Gestor de Tareas
 
 Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
