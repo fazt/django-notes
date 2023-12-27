@@ -1,20 +1,43 @@
-{% extends 'base.html' %} {% block content %}
 
-<h1>tasks</h1>
+{% extends 'base.html' %} 
 
-<ul>
-  {% for task in tasks %}
-  <li>
-    <a href="{% url 'task_detail' task.id %}">
-      {% if task.important %}
-      <strong>{{task.title}}</strong>
-      {% else %} {{task.id}} {{task.title}} {% endif %}
-      <p>{{task.description}}</p>
+{% block content %}
+<style>
+    h1 {
+          font-size: 36px;
+          color: #000000;
+      }
+    .lista {
+        background-color: #5e5c5c; /* Fondo del elemento de la lista */
+        border: 1px solid #000000; /* Borde del elemento de la lista */
+        border-radius: 8px; /* Bordes redondeados */
+        margin-bottom: 10px;
+        padding: 15px; 
+    }
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+</style>
 
-      {{task.datecompleted|date:'M j Y:i'}}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="container">
+    <h1>Tasks</h1>
+
+    <ul>
+        {% for task in tasks %}
+        <li class="lista">
+            <a href="{% url 'task_detail' task.id %}">
+                {% if task.important %}
+                <strong>{{ task.title }}</strong>
+                {% else %}
+                {{ task.id }} {{ task.title }}
+                {% endif %}
+                <p>{{ task.description }}</p>
+                <span class="date">{{ task.datecompleted|date:'M j Y:i' }}</span>
+            </a>
+        </lin>
+        {% endfor %}
+    </ul>
+</div>
 
 {% endblock %}
