@@ -33,7 +33,17 @@ def signup(request):
 @login_required
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
-    return render(request, 'tasks.html', {"tasks": tasks})
+    filter_type = request.GET.get('filter','all')
+    if filter_type == 'shared':
+        tasks = tasks.filter(shared=True)
+    elif filter_type == 'normal':
+        tasks = tasks.filter(shared=False)
+    return render(request, 'tasks.html', {"tasks": tasks, "filter_type": filter_type})
+
+@login_required
+def shared_tasks(request):
+    shared_tasks = Task.objects.filter(shared=True)
+    return render(request, 'shared_tasks.html', {"tasks": shared_tasks})
 
 @login_required
 def tasks_completed(request):
@@ -82,8 +92,9 @@ def signin(request):
 def task_detail(request, task_id):
     if request.method == 'GET':
         task = get_object_or_404(Task, pk=task_id, user=request.user)
+        is_shared_task = task.shared
         form = TaskForm(instance=task)
-        return render(request, 'task_detail.html', {'task': task, 'form': form})
+        return render(request, 'task_detail.html', {'task': task, 'form': form, 'is_shared_task': is_shared_task})
     else:
         try:
             task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -98,6 +109,7 @@ def complete_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
     if request.method == 'POST':
         task.datecompleted = timezone.now()
+        task.shared = request.POST.get('shared', False)
         task.save()
         return redirect('tasks')
 
