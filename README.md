@@ -445,7 +445,7 @@ El modelo de dominio se centra en el dominio de "Task", del cual se extienden ot
 
         progress_message = self.selenium.find_element(By.ID, 'progress-message')
         self.assertIn('Completed 0/0', progress_message.text)
-```
+        
 ### MODELO DE DOMINIO
 
 Modelo de Dominio:
