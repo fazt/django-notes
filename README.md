@@ -573,6 +573,14 @@ pipeline {
 
 Las pruebas funcionales automatizadas son realizadas con Selenium, un potente framework para pruebas web
 ![Imagen de WhatsApp 2023-12-26 a las 22 47 02_491b815f](https://github.com/SergioMenaQuispe/django-notes-ISII/blob/develop/images/Imagen%20de%20WhatsApp%202023-12-26%20a%20las%2022.47.02_cad53d01.jpg)
+
+### SonarQube
+
+Análisis del proyecto después de agregar las nuevas funcionalidades:
+![image](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/6baf3162-1693-4a9c-8b8b-0aa9369974af)
+
+
+
 # OWASP ZAP
 
 En el marco de nuestro compromiso con la seguridad del Proyecto de Gestor de Tareas, hemos implementado OWASP Zed Attack Proxy (ZAP) como una herramienta esencial para evaluar y mitigar posibles vulnerabilidades de seguridad. OWASP ZAP es una herramienta de prueba de seguridad de código abierto que nos permite identificar y abordar posibles riesgos de seguridad en nuestra aplicación.
