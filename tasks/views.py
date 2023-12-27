@@ -13,8 +13,10 @@ from .forms import TaskForm
 
 
 def signup(request):
+
+    signup_template = 'signup.html'
     if request.method == 'GET':
-        return render(request, 'signup.html', {"form": UserCreationForm})
+        return render(request, signup_template, {"form": UserCreationForm})
     else:
 
         if request.POST["password1"] == request.POST["password2"]:
@@ -25,9 +27,9 @@ def signup(request):
                 login(request, user)
                 return redirect('tasks')
             except IntegrityError:
-                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
+                return render(request, signup_template, {"form": UserCreationForm, "error": "Username already exists."})
 
-        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+        return render(request, signup_template, {"form": UserCreationForm, "error": "Passwords did not match."})
 
 
 @login_required
