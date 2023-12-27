@@ -430,6 +430,7 @@ El modelo de dominio se centra en el dominio de "Task", del cual se extienden ot
 
 ![M_IS_II](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/f2bdad6a-38ca-44b9-88b3-3acae5c2c3fe)
 =======
+```python
         # Acceder a la página de login para verificar un usuario no existente.
         self.selenium.get(f'{self.live_server_url}/signin/')
         self.selenium.find_element(By.NAME, 'username').send_keys('marisol')
@@ -445,7 +446,7 @@ El modelo de dominio se centra en el dominio de "Task", del cual se extienden ot
 
         progress_message = self.selenium.find_element(By.ID, 'progress-message')
         self.assertIn('Completed 0/0', progress_message.text)
-        
+```    
 ### MODELO DE DOMINIO
 
 Modelo de Dominio:
@@ -534,8 +535,6 @@ Un Usuario puede tener un Progreso asociado.
 
 ![microservicios](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/b6d63c89-fb03-4710-bf24-0f066c8503e1)
 
-
->>>>>>> rama-Paolo
 
 ![Imagen de WhatsApp 2023-12-26 a las 22 47 02_491b815f](https://github.com/SergioMenaQuispe/django-notes-ISII/blob/develop/images/Imagen%20de%20WhatsApp%202023-12-26%20a%20las%2022.47.02_cad53d01.jpg)
 
