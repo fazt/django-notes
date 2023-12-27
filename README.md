@@ -1,3 +1,5 @@
+![M_IS_II](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/104223268/f2bdad6a-38ca-44b9-88b3-3acae5c2c3fe)
+
 # Gestor de Tareas
 
 Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
