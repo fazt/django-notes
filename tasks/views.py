@@ -6,15 +6,12 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task
-
 from .forms import TaskForm
 
-# Create your views here.
-
-
 def signup(request):
+    signup_template = 'signup.html'
     if request.method == 'GET':
-        return render(request, 'signup.html', {"form": UserCreationForm})
+        return render(request, signup_template, {"form": UserCreationForm})
     else:
 
         if request.POST["password1"] == request.POST["password2"]:
@@ -25,15 +22,25 @@ def signup(request):
                 login(request, user)
                 return redirect('tasks')
             except IntegrityError:
-                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
+                return render(request, signup_template, {"form": UserCreationForm, "error": "Username already exists."})
 
-        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+        return render(request, signup_template, {"form": UserCreationForm, "error": "Passwords did not match."})
 
 
 @login_required
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
-    return render(request, 'tasks.html', {"tasks": tasks})
+    filter_type = request.GET.get('filter','all')
+    if filter_type == 'shared':
+        tasks = tasks.filter(shared=True)
+    elif filter_type == 'normal':
+        tasks = tasks.filter(shared=False)
+    return render(request, 'tasks.html', {"tasks": tasks, "filter_type": filter_type})
+
+@login_required
+def shared_tasks(request):
+    shared_tasks = Task.objects.filter(shared=True)
+    return render(request, 'shared_tasks.html', {"tasks": shared_tasks})
 
 @login_required
 def tasks_completed(request):
@@ -51,6 +58,8 @@ def create_task(request):
             new_task = form.save(commit=False)
             new_task.user = request.user
             new_task.save()
+            shared_with_users = request.POST.getlist('shared_with')
+            new_task.shared_with.set(shared_with_users)
             return redirect('tasks')
         except ValueError:
             return render(request, 'create_task.html', {"form": TaskForm, "error": "Error creating task."})
@@ -82,8 +91,9 @@ def signin(request):
 def task_detail(request, task_id):
     if request.method == 'GET':
         task = get_object_or_404(Task, pk=task_id, user=request.user)
+        is_shared_task = task.shared
         form = TaskForm(instance=task)
-        return render(request, 'task_detail.html', {'task': task, 'form': form})
+        return render(request, 'task_detail.html', {'task': task, 'form': form, 'is_shared_task': is_shared_task})
     else:
         try:
             task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -98,6 +108,7 @@ def complete_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
     if request.method == 'POST':
         task.datecompleted = timezone.now()
+        task.shared = request.POST.get('shared', False)
         task.save()
         return redirect('tasks')
 
