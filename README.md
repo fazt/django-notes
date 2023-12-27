@@ -1,4 +1,5 @@
-
+# INTEGRANTES:
+-Diego Francisco Apaza Andaluz (Rama_Diego)
 # Gestor de Tareas
 
 Este proyecto es una aplicación web para la gestión de tareas personales. Permite a los usuarios crear, organizar y priorizar sus tareas diarias de manera efectiva.
