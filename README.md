@@ -540,6 +540,37 @@ Un Usuario puede tener un Progreso asociado.
 
 # Frameworks Utilizados: Selenium y pytest
 
+'''
+pipeline {
+    agent any
+    stages {
+        stage('Construcción Automática') {
+            steps {
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\activate'
+                bat 'pip install -r requirements.txt'
+                bat 'python manage.py makemigrations'
+                bat 'python manage.py migrate'
+                
+                script {
+                    // Ejecuta el servidor Django en segundo plano
+                    bat 'start /B cmd /c "python manage.py runserver"'
+                    
+                    // Espera un tiempo para asegurar que el servidor se haya iniciado completamente
+                    sleep time: 15, unit: 'SECONDS'
+                    bat 'python manage.py test'
+                    
+                    // Realiza otras tareas mientras el servidor está en ejecución
+                    
+                    // Cierra el servidor usando Ctrl+C
+                    bat 'taskkill /F /IM "python.exe" /FI "WINDOWTITLE eq Django"'
+                }
+            }
+        }
+    }
+}
+'''
+
 Las pruebas funcionales automatizadas son realizadas con Selenium, un potente framework para pruebas web
 ![Imagen de WhatsApp 2023-12-26 a las 22 47 02_491b815f](https://github.com/SergioMenaQuispe/django-notes-ISII/blob/develop/images/Imagen%20de%20WhatsApp%202023-12-26%20a%20las%2022.47.02_cad53d01.jpg)
 # OWASP ZAP
