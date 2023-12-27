@@ -540,7 +540,7 @@ Un Usuario puede tener un Progreso asociado.
 
 # Frameworks Utilizados: Selenium y pytest
 
-```
+```python
 pipeline {
     agent any
     stages {
