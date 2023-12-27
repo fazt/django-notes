@@ -1,18 +1,51 @@
 {% extends 'base.html' %} {% block content %}
 
+{% if is_public %}
+<h1>public tasks</h1>
+{% else %}
 <h1>tasks</h1>
+{% endif %}
 
 <ul>
   {% for task in tasks %}
   <li>
-    <a href="{% url 'task_detail' task.id %}">
-      {% if task.important %}
-      <strong>{{task.title}}</strong>
-      {% else %} {{task.id}} {{task.title}} {% endif %}
-      <p>{{task.description}}</p>
+    {% if is_public %}
+      <span>
+        {% if task.important %}
+          <strong>{{task.title}}</strong>
+        {% else %}
+          {{task.id}} {{task.title}}
+        {% endif %}
+        <p>{{task.description}}</p>
+        {{task.datecompleted|date:'M j Y:i'}}
+      </span>
+      <ul>
+        {% if comments_dict %}
+          <p>Comentarios:</p>
+          {% for task_id, task_comments in comments_dict.items %}
+              {% for comment in task_comments %}
+                {% if comment.task.id == task.id %}
+                  <li> {{comment.user}}: {{ comment.text }}<br></li>
+                {% endif %}
+              {% endfor %}
+          {% endfor %}
+        {% endif %}
+      </ul>
+      <form method="post" action="{% url 'add_comment' task.id %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Agregar Comentario</button>
+      </form>
+    {% else %}
+      <a href="{% url 'task_detail' task.id %}">
+        {% if task.important %}
+        <strong>{{task.title}}</strong>
+        {% else %} {{task.id}} {{task.title}} {% endif %}
+        <p>{{task.description}}</p>
 
-      {{task.datecompleted|date:'M j Y:i'}}
-    </a>
+        {{task.datecompleted|date:'M j Y:i'}}
+      </a>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>

@@ -9,6 +9,8 @@ class Task(models.Model):
     important = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_limite = models.DateField(null=True, blank=True)
+    public = models.BooleanField(default=False)
 
     def _str_(self):  
-        return self.title + ' - ' + self.user.username
+      return self.title + ' - ' + self.user.username
+# Create your models here.

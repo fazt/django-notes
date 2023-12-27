@@ -6,8 +6,9 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .models import Task
-
+from comments.models import Comment
 from .forms import TaskForm
+from comments.forms import CommentForm
 
 # Create your views here.
 
@@ -29,15 +30,19 @@ def signup(request):
 
         return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
 
+# prueba
+
 
 @login_required
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'tasks.html', {"tasks": tasks})
 
+
 @login_required
 def tasks_completed(request):
-    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    tasks = Task.objects.filter(
+        user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
     return render(request, 'tasks.html', {"tasks": tasks})
 
 
@@ -78,12 +83,14 @@ def signin(request):
         login(request, user)
         return redirect('tasks')
 
+
 @login_required
 def task_detail(request, task_id):
     if request.method == 'GET':
         task = get_object_or_404(Task, pk=task_id, user=request.user)
+        comments = task.comments.all()
         form = TaskForm(instance=task)
-        return render(request, 'task_detail.html', {'task': task, 'form': form})
+        return render(request, 'task_detail.html', {'task': task, 'form': form, 'comments': comments})
     else:
         try:
             task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -93,6 +100,7 @@ def task_detail(request, task_id):
         except ValueError:
             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task.'})
 
+
 @login_required
 def complete_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -101,9 +109,41 @@ def complete_task(request, task_id):
         task.save()
         return redirect('tasks')
 
+
 @login_required
 def delete_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id, user=request.user)
     if request.method == 'POST':
         task.delete()
         return redirect('tasks')
+
+
+@login_required
+def task_public(request):
+    tasks = Task.objects.filter(public=True)
+    tasks = tasks.exclude(user=request.user)
+
+    comments_dict = {}
+
+    for task in tasks:
+        comments = Comment.objects.filter(task=task)
+        comments_dict[task.id] = comments
+
+    return render(request, 'tasks.html', {"tasks": tasks, "is_public": True, "comments_dict": comments_dict, "comment_form": CommentForm})
+
+
+@login_required
+def add_comment(request, task_id):
+    print(f"task_id: {task_id}")
+    task = get_object_or_404(Task, pk=task_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.task = task
+            new_comment.user = request.user
+            new_comment.save()
+            print("Comment saved successfully")
+        else:
+            print("Comment not saved")
+    return redirect('task_public')

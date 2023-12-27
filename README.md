@@ -48,3 +48,12 @@ Verifica que la fecha de creación de una tarea sea una fecha valida
 **fecha_limite:** Un campo de fecha que puede ser nulo y en blanco. Almacena la fecha límite para la tarea.
 
 **def __str__(self)::** Un método que devuelve una representación de cadena del objeto. En este caso, devuelve una cadena que combina el título de la tarea y el nombre de usuario del propietario.
+Rama de Christian Pardavé Espinoza:
+
+- Test vista tasks.
+- Implementación de comentarios en tareas públicas.
+
+
+Para la adición de comentarios en las tareas se creó la aplicación _comments_ dentro de django, para separar sus metodos de la aplicación _tasks_. Para esta implementación se identificó los modulos del proyecto.
+
+![Modulo de Commets](https://github.com/SergioMenaQuispe/django-notes-ISII/blob/rama-christian/images/Captura%20de%20pantalla%202023-12-25%20225503.png)
