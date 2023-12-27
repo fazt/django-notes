@@ -537,5 +537,5 @@ Un Usuario puede tener un Progreso asociado.
 
 >>>>>>> rama-Paolo
 
-![Imagen de WhatsApp 2023-12-26 a las 22 47 02_491b815f](https://github.com/SergioMenaQuispe/django-notes-ISII/assets/103955471/7d0dcfaa-29ac-4e5c-8f6e-1aa518881e9f)
+![Imagen de WhatsApp 2023-12-26 a las 22 47 02_491b815f]()
 
