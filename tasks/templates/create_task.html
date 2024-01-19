@@ -2,13 +2,29 @@
 
 {% block content %}
 
-<h1>CReate task</h1>
+<h1>Create task</h1>
+<style>
+    form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        margin: auto;
+    }
 
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+        color: #ffffff;
+    }
+</style>
 {{error}}
 <form action="/create_task/" method="POST">
   {% csrf_token %}
   {{form}}
-
   <button>Save</button>
 </form>
 {% endblock %}

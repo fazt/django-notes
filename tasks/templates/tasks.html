@@ -1,20 +1,87 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 
+{% block content %}
+<style>
+  h1 {
+        font-size: 36px;
+        color: #000000;
+    }
+  .lista {
+      background-color: #5e5c5c; /* Fondo del elemento de la lista */
+      border: 1px solid #000000; /* Borde del elemento de la lista */
+      border-radius: 8px; /* Bordes redondeados */
+      margin-bottom: 10px;
+      padding: 15px; 
+  }
+  a {
+      text-decoration: none;
+      color: #007bff;
+  }
+</style>
+
+<div class="container">
+{% if is_public %}
+<h1>public tasks</h1>
+{% else %}
 <h1>tasks</h1>
+{% endif %}
+
+<form>
+  <label for="filter">Filter:</label>
+  <select name="filter" id="filter">
+    <option value="all" {% if filter_type == 'all' %}selected{% endif %}>ALL</option>
+    <option value="shared" {% if filter_type == 'shared' %}selected{% endif %}>Shared</option>
+    <option value="normal" {% if filter_type == 'normal' %}selected{% endif %}>Normal</option>
+  </select>
+  <button type="submit">Apply</button>
+</form>
 
 <ul>
   {% for task in tasks %}
   <li>
-    <a href="{% url 'task_detail' task.id %}">
-      {% if task.important %}
-      <strong>{{task.title}}</strong>
-      {% else %} {{task.id}} {{task.title}} {% endif %}
-      <p>{{task.description}}</p>
+    {% if is_public %}
+      <span>
+        {% if task.important %}
+          <strong>{{task.title}}</strong>
+        {% else %}
+          {{task.id}} {{task.title}}
+        {% endif %}
+        <p>{{task.description}}</p>
+        {{task.datecompleted|date:'M j Y:i'}}
+      </span>
+      <ul>
+        {% if comments_dict %}
+          <p>Comentarios:</p>
+          {% for task_id, task_comments in comments_dict.items %}
+              {% for comment in task_comments %}
+                {% if comment.task.id == task.id %}
+                  <li> {{comment.user}}: {{ comment.text }}<br></li>
+                {% endif %}
+              {% endfor %}
+          {% endfor %}
+        {% endif %}
+      </ul>
+      <form method="post" action="{% url 'add_comment' task.id %}">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Agregar Comentario</button>
+      </form>
+    {% else %}
+      <a href="{% url 'task_detail' task.id %}">
+        {% if task.important %}
+        <strong>{{task.title}}</strong>
+        {% else %} {{task.id}} {{task.title}} {% endif %}
+        <p>{{task.description}}</p>
 
-      {{task.datecompleted|date:'M j Y:i'}}
-    </a>
+        {{task.datecompleted|date:'M j Y:i'}}
+      </a>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>
+</div>
+
+<span id="progress-message">Tasks completed {{count_completed}}/{{count_total}}</span>
+<progress value="{{count_completed}}" max="{{count_total}}"></progress>
 
 {% endblock %}

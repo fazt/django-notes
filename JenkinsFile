@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage('Construcción Automática') {
+            steps {
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\activate'
+                bat 'pip install -r requirements.txt'
+                bat 'python manage.py makemigrations'
+                bat 'python manage.py migrate'
+                
+                script {
+                    // Ejecuta el servidor Django en segundo plano
+                    bat 'start /B cmd /c "python manage.py runserver"'
+                    
+                    // Espera un tiempo para asegurar que el servidor se haya iniciado completamente
+                    sleep time: 15, unit: 'SECONDS'
+                    bat 'python manage.py test'
+                    
+                    // Realiza otras tareas mientras el servidor está en ejecución
+                    
+                    // Cierra el servidor usando Ctrl+C
+                    bat 'taskkill /F /IM "python.exe" /FI "WINDOWTITLE eq Django"'
+                }
+            }
+        }
+    }
+}
